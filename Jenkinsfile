@@ -22,7 +22,7 @@ pipeline {
          stage('check installation') { 
           steps {
             sh """
-                echo "$0"
+                npm --version 
             """
             }
         }
