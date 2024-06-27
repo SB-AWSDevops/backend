@@ -13,8 +13,11 @@ pipeline {
    stages {
     stage('Read the version'){
       steps{
+        script{
         def packageJson = readJSON file: 'dir/input.json'
         def appVersion = packageJson.version
+        echo "application version: $appVersion"
+        }
       }
     }
       stage('Install Dependencies') { 
