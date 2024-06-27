@@ -34,10 +34,11 @@ pipeline {
             }
         }
 
-         stage('check installation') { 
+         stage('Build') { 
           steps {
             sh """
-                npm --version 
+                zip -r backend-${appVersion}.zip * -x Jenkinsfile -x backend-${appVersion}.zip
+                ls -ltr
             """
             }
         }
@@ -48,7 +49,7 @@ pipeline {
       post{
         always{
             echo 'I will always say hello again'
-            //deleteDir()
+            deleteDir()
         }
         success{
             echo 'I will say hello only when success'
